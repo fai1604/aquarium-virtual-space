@@ -26,13 +26,13 @@ public class Controls extends TilePane {
             controlButtons[i] = new Button(buttonNames[i]);
             controlButtons[i].setMinSize(120, 20);
             controlButtons[i].setPadding(new Insets(10));
-            super.getChildren().add(controlButtons[i]);
-            super.setAlignment(Pos.CENTER);
+            this.getChildren().add(controlButtons[i]);
+            this.setAlignment(Pos.CENTER);
         }
 
-        super.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
-        super.setPadding(new Insets(10));
-        super.setHgap(10);
-        super.setVgap(20);
+        this.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setPadding(new Insets(10));
+        this.setHgap(10);
+        this.setVgap(20);
     }
 }
