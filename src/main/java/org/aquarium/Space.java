@@ -20,7 +20,7 @@ public class Space extends StackPane {
 
     public void initializeBackground() {
         Image image = new Image(App.class.getResource("images/background.png").toExternalForm());
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
         this.setBackground(new Background(backgroundImage));
     }
 

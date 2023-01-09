@@ -1,5 +1,8 @@
 package org.aquarium;
 
-public abstract class Badge {
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public abstract class Badge extends ImageView {
     public abstract void printBadgeWithDescription();
 }
