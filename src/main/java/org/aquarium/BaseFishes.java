@@ -12,23 +12,23 @@ public class BaseFishes extends Entity {
             switch(random.nextInt(FISH_TYPE_COUNT)) {
                 case 0:
                     this.name = "arapaima";
-                    this.appearance = new Appearance("src\\main\\resources\\org\\aquarium\\images\\arapaima.png");
+                    this.appearance = new Appearance(App.class.getResource("images/arapaima.png").toExternalForm());
                     break;
                 case 1:
                     this.name = "mackerel";
-                    this.appearance = new Appearance("src\\main\\resources\\org\\aquarium\\images\\mackerel.png");
+                    this.appearance = new Appearance(App.class.getResource("images/mackerel.png").toExternalForm());
                     break;
                 case 2:
                     this.name = "sardine";
-                    this.appearance = new Appearance("src\\main\\resources\\org\\aquarium\\images\\sardine.png");
+                    this.appearance = new Appearance(App.class.getResource("images/sardine.png").toExternalForm());
                     break;
                 case 3:
                     this.name = "tilapia";
-                    this.appearance = new Appearance("src\\main\\resources\\org\\aquarium\\images\\tilapia.png");
+                    this.appearance = new Appearance(App.class.getResource("images/tilapia.png").toExternalForm());
                     break;
                 case 4:
                     this.name = "toman";
-                    this.appearance = new Appearance("src\\main\\resources\\org\\aquarium\\images\\toman.png");
+                    this.appearance = new Appearance(App.class.getResource("images/toman.png").toExternalForm());
                     break;
                 default:
                     throw new Exception();

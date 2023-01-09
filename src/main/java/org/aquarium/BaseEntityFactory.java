@@ -22,7 +22,7 @@ public class BaseEntityFactory implements EntityFactory{
     }
 
     @Override
-    public Entity createSeaweedEntity() {
+    public Entity createSeaweedsEntity() {
         return new BaseSeaweeds();
     }
 

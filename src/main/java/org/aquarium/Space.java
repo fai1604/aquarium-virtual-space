@@ -1,7 +1,6 @@
 package org.aquarium;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -12,16 +11,31 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 
 public class Space extends StackPane {
+    private ArrayList<EntityImageViewAdapter> entities = new ArrayList<EntityImageViewAdapter>();
 
     public Space() {
-        initializeBackground();    
+        this.initializeBackground();
+        this.initializeEntities();
     }
 
     public void initializeBackground() {
-        Image image = new Image(App.class.getResource("images/background.webp").toExternalForm());
-        // Image image = new Image("https://thumbs.dreamstime.com/b/underwater-aquarium-scene-5421127.jpg");
-        BackgroundImage bgImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        super.setBackground(new Background(bgImage));
+        Image image = new Image(App.class.getResource("images/background.png").toExternalForm());
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(backgroundImage));
     }
-    
+
+    public void initializeEntities() {
+        this.initializeEntities(new BaseEntityFactory());
+    }
+
+    public void initializeEntities(EntityFactory entityFactory) {
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorseEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createBubblesEntity()));
+
+        this.getChildren().addAll(entities);
+    }
 }

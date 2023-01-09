@@ -15,7 +15,6 @@ import java.lang.reflect.Array;
 
 public class AquariumSpace {
     public Stage stage;
-    
 
     public AquariumSpace(Stage stage) {
         this.stage = stage;
@@ -23,15 +22,17 @@ public class AquariumSpace {
 
     public void startAquarium() {
         BorderPane root = new BorderPane();
-        Controls controls = new Controls();
         Space space = new Space();
+        Controls controls = new Controls();
+
         root.setTop(space);
         root.setBottom(controls);
+
         Scene scene = new Scene(root, 700, 480);
+        
         stage.setTitle("Aquarium Space");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
-
 }

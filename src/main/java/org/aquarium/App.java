@@ -15,7 +15,6 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
     AquariumSpace aquariumSpace;
 
     @Override
@@ -24,6 +23,7 @@ public class App extends Application {
         aquariumSpace.startAquarium();
     }
 
+    @Override
     public void stop() throws Exception {
         super.stop();
     }
@@ -40,5 +40,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }

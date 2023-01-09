@@ -1,7 +1,6 @@
 package org.aquarium;
 
 public class BadgeSingleton {
-    
     // BaseEntityFactory baseEntityFactory;
     private static BadgeSingleton uniqueInstance;
 

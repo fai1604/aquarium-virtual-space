@@ -1,7 +1,9 @@
 module org.aquarium {
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires javafx.fxml;
+    requires transitive javafx.graphics;
 
     opens org.aquarium to javafx.fxml;
+
     exports org.aquarium;
 }
