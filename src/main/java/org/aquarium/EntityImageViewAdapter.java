@@ -7,7 +7,7 @@ public class EntityImageViewAdapter extends ImageView {
     public Entity entity;
 
     public EntityImageViewAdapter(Entity entity) {
-        super(new Image(entity.appearance.assetPath));
+        super(new Image(entity.assetPath));
         this.entity = entity;
     }
 }

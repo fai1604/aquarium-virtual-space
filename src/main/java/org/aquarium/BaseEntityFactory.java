@@ -7,12 +7,12 @@ public class BaseEntityFactory implements EntityFactory{
     }
 
     @Override
-    public Entity createCrabEntity() {
+    public Entity createCrabsEntity() {
         return new BaseCrab();
     }
 
     @Override
-    public Entity createSeahorseEntity() {
+    public Entity createSeahorsesEntity() {
         return new BaseSeahorse();
     }
 

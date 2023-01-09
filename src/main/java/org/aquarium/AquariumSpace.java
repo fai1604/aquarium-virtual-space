@@ -33,7 +33,6 @@ public class AquariumSpace {
         Scene scene = new Scene(root, 700, 480);
         
         stage.setTitle("Aquarium Space");
-        // stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

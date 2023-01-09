@@ -30,11 +30,11 @@ public class Space extends StackPane {
 
     public void initializeEntities(EntityFactory entityFactory) {
         this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorseEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
         this.entities.add(new EntityImageViewAdapter(entityFactory.createBubblesEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabsEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()));
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
 
         this.getChildren().addAll(entities);
     }

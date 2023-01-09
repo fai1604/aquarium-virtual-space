@@ -12,29 +12,27 @@ public class BaseFishes extends Entity {
             switch(random.nextInt(FISH_TYPE_COUNT)) {
                 case 0:
                     this.name = "arapaima";
-                    this.appearance = new Appearance(App.class.getResource("images/arapaima.png").toExternalForm());
+                    this.assetPath = App.class.getResource("images/arapaimas.png").toExternalForm();
                     break;
                 case 1:
                     this.name = "mackerel";
-                    this.appearance = new Appearance(App.class.getResource("images/mackerel.png").toExternalForm());
+                    this.assetPath = App.class.getResource("images/mackerels.png").toExternalForm();
                     break;
                 case 2:
                     this.name = "sardine";
-                    this.appearance = new Appearance(App.class.getResource("images/sardine.png").toExternalForm());
+                    this.assetPath = App.class.getResource("images/sardines.png").toExternalForm();
                     break;
                 case 3:
                     this.name = "tilapia";
-                    this.appearance = new Appearance(App.class.getResource("images/tilapia.png").toExternalForm());
+                    this.assetPath = App.class.getResource("images/tilapias.png").toExternalForm();
                     break;
                 case 4:
                     this.name = "toman";
-                    this.appearance = new Appearance(App.class.getResource("images/toman.png").toExternalForm());
+                    this.assetPath = App.class.getResource("images/tomans.png").toExternalForm();
                     break;
                 default:
                     throw new Exception();
             }
-
-            this.location = new Location(10, 10);
         } 
         catch (Exception e) {
             System.out.println("An exception occurred when generating fishes");
