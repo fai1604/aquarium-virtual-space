@@ -8,11 +8,16 @@ public class BaseFishes extends Entity {
     public BaseFishes() {
         try {
             Random random = new Random();
-        
-            switch(random.nextInt(FISH_TYPE_COUNT)) {
+            int i = 0;
+            // random.nextInt(FISH_TYPE_COUNT)
+            switch(i) {
                 case 0:
                     this.name = "arapaima";
                     this.assetPath = App.class.getResource("images/arapaimas.png").toExternalForm();
+                    Badge arapaimaBadge = ArapaimaBadge.getInstance();
+                    if(arapaimaBadge != null){
+                        arapaimaBadge.printBadgeWithDescription();
+                    }
                     break;
                 case 1:
                     this.name = "mackerel";

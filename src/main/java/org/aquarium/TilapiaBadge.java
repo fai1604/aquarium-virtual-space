@@ -4,8 +4,18 @@ import javafx.scene.image.Image;
 
 public class TilapiaBadge extends Badge{
 
-    public TilapiaBadge() {
+    private static TilapiaBadge uniqueTilapiaBadge;
+    
+    private TilapiaBadge() {
         printBadgeWithDescription();
+    }
+
+    public static TilapiaBadge getInstance(){
+        if (uniqueTilapiaBadge == null) {
+			System.out.println("Creating unique instance of a badge");
+			uniqueTilapiaBadge = new TilapiaBadge();
+		}
+		return uniqueTilapiaBadge;
     }
 
     @Override

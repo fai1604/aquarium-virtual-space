@@ -9,14 +9,22 @@ import javafx.scene.image.ImageView;
 
 public class TomanBadge extends Badge {
 
-    // public void printBadgeWithDescription() {
-    //     // TODO Auto-generated method stub
-    //     List<Image> images = new ArrayList<Image>();
-    //     Image toman = new Image(App.class.getResource("images/toman.png").toExternalForm());
-    // }
+    private static TomanBadge uniqueTomanBadge;
     
-    public TomanBadge() {
+    private TomanBadge() {
         printBadgeWithDescription();
+    }
+
+    public static TomanBadge getInstance(){
+        if (uniqueTomanBadge == null) {
+			System.out.println("Creating unique instance of a badge");
+			uniqueTomanBadge = new TomanBadge();
+            return uniqueTomanBadge;
+		}
+        else{
+            return null;
+        }
+		
     }
 
     @Override
