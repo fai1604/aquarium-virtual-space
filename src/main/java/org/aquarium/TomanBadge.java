@@ -21,12 +21,7 @@ public class TomanBadge extends Badge {
 
     @Override
     public void printBadgeWithDescription() {
-        // TODO Auto-generated method stub
-        // List<Image> images = new ArrayList<Image>();
-        // ImageView toman = new ImageView();
-        super.setImage(new Image(App.class.getResourceAsStream("/org/aquarium/images/toman.png")));
-        // Image toman = new Image("images/toman.png");
-        // return toman;
+        super.setImage(new Image(App.class.getResourceAsStream("/org/aquarium/images/Toman-Badge.png")));
     }
     
 }

@@ -30,7 +30,7 @@ public class AquariumSpace {
         root.setTop(space);
         root.setBottom(controls);
 
-        Scene scene = new Scene(root, 700, 480);
+        Scene scene = new Scene(root, 1300, 900);
         
         stage.setTitle("Aquarium Space");
         stage.setScene(scene);

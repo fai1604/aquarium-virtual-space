@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 
 public class Space extends StackPane {
     private ArrayList<EntityImageViewAdapter> entities = new ArrayList<EntityImageViewAdapter>();
+    public ArrayList<Badge> badges = new ArrayList<Badge>();
 
     public Space() {
         this.initializeBackground();
@@ -36,6 +37,13 @@ public class Space extends StackPane {
         this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()));
         this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
 
+        // this.badges.add(new TomanBadge());
+        // this.badges.add(new ArapaimaBadge());
+        this.badges.add(new TongkolBadge());
+        // this.badges.add(new TilapiaBadge());
+        // this.badges.add(new SardinBadge());
+
         this.getChildren().addAll(entities);
+        this.getChildren().addAll(badges);
     }
 }
