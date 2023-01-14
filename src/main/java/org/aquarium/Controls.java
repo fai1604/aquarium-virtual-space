@@ -1,5 +1,7 @@
 package org.aquarium;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -26,6 +28,9 @@ public class Controls extends TilePane {
             controlButtons[i] = new Button(buttonNames[i]);
             controlButtons[i].setMinSize(120, 20);
             controlButtons[i].setPadding(new Insets(10));
+
+            controlButtons[i].setOnAction(event);
+
             this.getChildren().add(controlButtons[i]);
             this.setAlignment(Pos.CENTER);
         }
@@ -35,4 +40,11 @@ public class Controls extends TilePane {
         this.setHgap(10);
         this.setVgap(20);
     }
+
+    EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+        public void handle(ActionEvent e)
+        {
+            System.out.println("Button Pressed");
+        }
+    };
 }
