@@ -10,4 +10,5 @@ public class EntityImageViewAdapter extends ImageView {
         super(new Image(entity.assetPath));
         this.entity = entity;
     }
+    
 }

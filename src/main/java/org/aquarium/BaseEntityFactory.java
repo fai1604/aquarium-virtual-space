@@ -2,8 +2,8 @@ package org.aquarium;
 
 public class BaseEntityFactory implements EntityFactory{
     @Override
-    public Entity createFishesEntity(AquariumSpace aquarium) {
-        return new BaseFishes(aquarium);
+    public Entity createFishesEntity(AquariumSpace aquarium, Space space) {
+        return new BaseFishes(aquarium, space);
     }
 
     @Override

@@ -36,13 +36,11 @@ public class AquariumSpace {
         root.setTop(space);
         root.setBottom(controls);
 
-        Scene scene = new Scene(root, 1300, 900);
+        Scene scene = new Scene(root, 1400, 780);
         
         stage.setTitle("Aquarium Space");
         stage.setScene(scene);
         stage.show();
-        space.initializeBackground();
-        // space.initializeEntities();
     }
 
 }

@@ -21,18 +21,15 @@ public class ArapaimaBadge extends Badge{
 			uniqueArapaimaBadge = new ArapaimaBadge(aquarium);
             return uniqueArapaimaBadge;
 		}
-        else{
+        else {
             return null;
         }
-		
     }
 
     @Override
     public void printBadgeWithDescription() {
         Image badge = new Image(App.class.getResourceAsStream("/org/aquarium/images/Arapaima-Badge.png"));
         ImageView badgeView = new ImageView(badge);
-        // this.badgeName = "arapaima";
-        // this.badgeAssetPath = App.class.getResource("images/Arapaima-Badge.png").toExternalForm();
         Popup popup = new Popup();
         Label plabel = new Label();
         Button close = new Button();

@@ -2,24 +2,37 @@ package org.aquarium;
 
 import java.util.ArrayList;
 
+import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 
 public class Space extends StackPane {
     private ArrayList<EntityImageViewAdapter> entities = new ArrayList<EntityImageViewAdapter>();
-    public AquariumSpace aquarium;
+    private ArrayList<ImageView> badges = new ArrayList<ImageView>();
+    Popup badgeListPopup = new Popup();
+    private EntityImageViewAdapter fish;
+    AquariumSpace aquarium;
 
     public Space(AquariumSpace aquarium) {
         this.aquarium = aquarium;
-        // this.initializeBackground();
-        // this.initializeEntities();
+        this.initializeBackground();
+        this.initializeEntities();
+        this.initializeBadges();
+        this.initializeBadgeListPopup();
     }
 
     public void initializeBackground() {
@@ -33,14 +46,73 @@ public class Space extends StackPane {
     }
 
     public void initializeEntities(EntityFactory entityFactory) {
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium)));
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createBubblesEntity()));
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabsEntity()));
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()));
-        // this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
+        EntityImageViewAdapter bubbles = new EntityImageViewAdapter(entityFactory.createBubblesEntity()); // index 0 
+        EntityImageViewAdapter ship = new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()); // index 1
+        EntityImageViewAdapter crab = new EntityImageViewAdapter(entityFactory.createCrabsEntity()); // index 2
+        EntityImageViewAdapter seahorse = new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()); // index 3
+        EntityImageViewAdapter seaweed = new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()); // index 4
+
+        this.entities.add(bubbles);
+        this.entities.add(ship);
+        this.entities.add(crab);
+        this.entities.add(seahorse);
+        this.entities.add(seaweed);
+
+        entities.forEach((entity) -> entity.setVisible(false));
 
         this.getChildren().addAll(entities);
+    }
+
+    public void initializeBadges() {
+        Image arapaima = new Image(App.class.getResourceAsStream("/org/aquarium/images/Arapaima-Badge.png"));
+        ImageView arapaimaView = new ImageView(arapaima);
+        arapaimaView.setFitHeight(200);
+        arapaimaView.setFitWidth(400);
+
+        Image mackerel = new Image(App.class.getResourceAsStream("/org/aquarium/images/Mackerel-Badge.png"));
+        ImageView mackerelView = new ImageView(mackerel);
+        mackerelView.setFitHeight(200);
+        mackerelView.setFitWidth(400);
+
+        Image sardin = new Image(App.class.getResourceAsStream("/org/aquarium/images/Sardine-Badge.png"));
+        ImageView sardinView = new ImageView(sardin);
+        sardinView.setFitHeight(200);
+        sardinView.setFitWidth(400);
+
+        Image tilapia = new Image(App.class.getResourceAsStream("/org/aquarium/images/Tilapia-Badge.png"));
+        ImageView tilapiaView = new ImageView(tilapia);
+        tilapiaView.setFitHeight(200);
+        tilapiaView.setFitWidth(400);
+
+        Image toman = new Image(App.class.getResourceAsStream("/org/aquarium/images/Toman-Badge.png"));
+        ImageView tomanView = new ImageView(toman);
+        tomanView.setFitHeight(200);
+        tomanView.setFitWidth(400);
+
+        this.badges.add(arapaimaView);
+        this.badges.add(mackerelView);
+        this.badges.add(sardinView);
+        this.badges.add(tilapiaView);
+        this.badges.add(tomanView);
+
+        badges.forEach((badge) -> badge.setVisible(false));
+    }
+
+    public void initializeBadgeListPopup() {
+        Label plabel = new Label();
+        plabel.setStyle("-fx-background-color: #808080; -fx-font-size:25");
+        plabel.setText("Badges List");
+
+        GridPane badgeList = new GridPane();
+        badgeList.addRow(0, plabel);
+        badgeList.addRow(1, badges.get(0), badges.get(1), badges.get(2));
+        badgeList.addRow(2, badges.get(3), badges.get(4));
+        badgeList.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
+        badgeList.setPadding(new Insets(10));
+        badgeList.setHgap(10);
+        badgeList.setVgap(20);
+
+        badgeListPopup.getContent().add(badgeList);
     }
 
     public void addFishes() {
@@ -48,7 +120,45 @@ public class Space extends StackPane {
     }
 
     public void addFishes(EntityFactory entityFactory) {
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium)));
-        this.getChildren().addAll(entities);
+        fish = new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium, this));
+        this.getChildren().add(fish);
+    }
+
+    public void removeFishes() {
+        this.getChildren().remove(fish);
+        fish = null;
+    }
+
+     public void toggleFishes(Button button) {
+        if (fish == null) {
+            addFishes();
+            button.setText("Remove Fishes");
+        } else {
+            removeFishes();
+            button.setText("Generate Fishes");
+        }
+    }
+
+    public boolean toggleEntity(int index) {
+        var entity = entities.get(index);
+        if (!entity.isVisible()) {
+            entity.setVisible(true);
+        } else {
+            entity.setVisible(false);
+        }
+        return entity.isVisible();
+    }
+
+    public boolean toggleBadgeListPopup() {
+        if (!badgeListPopup.isShowing()) {
+            badgeListPopup.show(aquarium.getStage());
+        } else {
+            badgeListPopup.hide();
+        }
+        return badgeListPopup.isShowing();
+    }
+    
+    public ArrayList<ImageView> getBadgeList() {
+        return badges;
     }
 }
