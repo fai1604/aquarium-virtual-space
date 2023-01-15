@@ -3,6 +3,7 @@ package org.aquarium;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Popup;
 
 public class ArapaimaBadge extends Badge{
@@ -28,28 +29,28 @@ public class ArapaimaBadge extends Badge{
 
     @Override
     public void printBadgeWithDescription() {
-        // super.setImage(new Image(App.class.getResourceAsStream("/org/aquarium/images/Arapaima-Badge.png")));
+        Image badge = new Image(App.class.getResourceAsStream("/org/aquarium/images/Arapaima-Badge.png"));
+        ImageView badgeView = new ImageView(badge);
         // this.badgeName = "arapaima";
         // this.badgeAssetPath = App.class.getResource("images/Arapaima-Badge.png").toExternalForm();
         Popup popup = new Popup();
         Label plabel = new Label();
-        plabel.setText("Test Arapaima");
-        plabel.setMinHeight(160);
-        plabel.setMinWidth(300);
-        plabel.setStyle("-fx-background-color: #0000FF; -fx-font-size:25");
+        Button close = new Button();
+
+        plabel.setMinHeight(350);
+        plabel.setMinWidth(650);
+        plabel.setStyle("-fx-background-color: #808080; -fx-font-size:25");
+
+        close.setText("Close");
+        close.setOnAction(e -> {
+            popup.hide();
+        });
+
         popup.getContent().add(plabel);
-        popup.getContent().add(new Button("test"));
+        popup.getContent().add(close);
+        popup.getContent().add(badgeView);
         System.out.println(aquarium.getStage());
         popup.show(aquarium.getStage());
-        // long mTime = System.currentTimeMillis();
-        // long end = mTime + 10000; // 5 seconds 
-        // while (mTime < end) 
-        // {
-        //     mTime = System.currentTimeMillis();
-        //     if(mTime == end){
-        //         popup.hide();
-        //     }
-        // } 
     }
     
 }

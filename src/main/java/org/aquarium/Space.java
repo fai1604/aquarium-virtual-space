@@ -34,12 +34,12 @@ public class Space extends StackPane {
     }
 
     public void initializeEntities(EntityFactory entityFactory) {
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium)));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createBubblesEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabsEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()));
-        this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium)));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createBubblesEntity()));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createCrabsEntity()));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()));
+        // this.entities.add(new EntityImageViewAdapter(entityFactory.createSeaweedsEntity()));
 
         // this.badges.add(new TomanBadge());
         // this.badges.add(new ArapaimaBadge());
@@ -49,5 +49,14 @@ public class Space extends StackPane {
 
         this.getChildren().addAll(entities);
         this.getChildren().addAll(badges);
+    }
+
+    public void addFishes() {
+        this.addFishes(new BaseEntityFactory());
+    }
+
+    public void addFishes(EntityFactory entityFactory) {
+        this.entities.add(new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium)));
+        this.getChildren().addAll(entities);
     }
 }

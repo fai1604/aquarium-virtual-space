@@ -31,7 +31,7 @@ public class AquariumSpace {
     public void startAquarium() {
         BorderPane root = new BorderPane();
         Space space = new Space(this);
-        Controls controls = new Controls();
+        Controls controls = new Controls(space);
 
         root.setTop(space);
         root.setBottom(controls);
@@ -42,7 +42,7 @@ public class AquariumSpace {
         stage.setScene(scene);
         stage.show();
         space.initializeBackground();
-        space.initializeEntities();
+        // space.initializeEntities();
     }
 
 }
