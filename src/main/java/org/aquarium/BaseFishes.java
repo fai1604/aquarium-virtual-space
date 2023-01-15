@@ -5,7 +5,7 @@ import java.util.Random;
 public class BaseFishes extends Entity {
     private static final int FISH_TYPE_COUNT = 5;
 
-    public BaseFishes() {
+    public BaseFishes(AquariumSpace aquarium) {
         try {
             Random random = new Random();
             int i = 0;
@@ -14,7 +14,7 @@ public class BaseFishes extends Entity {
                 case 0:
                     this.name = "arapaima";
                     this.assetPath = App.class.getResource("images/arapaimas.png").toExternalForm();
-                    Badge arapaimaBadge = ArapaimaBadge.getInstance();
+                    Badge arapaimaBadge = ArapaimaBadge.getInstance(aquarium);
                     if(arapaimaBadge != null){
                         arapaimaBadge.printBadgeWithDescription();
                     }

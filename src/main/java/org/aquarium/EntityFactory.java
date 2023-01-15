@@ -1,7 +1,7 @@
 package org.aquarium;
 
 public interface EntityFactory {
-    public abstract Entity createFishesEntity();
+    public abstract Entity createFishesEntity(AquariumSpace aquarium);
     public abstract Entity createCrabsEntity();
     public abstract Entity createSeahorsesEntity();
     public abstract Entity createWreckedShipEntity();
