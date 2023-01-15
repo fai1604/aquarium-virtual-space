@@ -4,8 +4,10 @@ import java.util.Random;
 
 public class BaseFishes extends Entity {
     private static final int FISH_TYPE_COUNT = 5;
+    public AquariumSpace aquarium;
 
     public BaseFishes(AquariumSpace aquarium) {
+        this.aquarium = aquarium;
         try {
             Random random = new Random();
             int i = 0;
