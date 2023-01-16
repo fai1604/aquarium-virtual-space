@@ -1,5 +1,7 @@
 package org.aquarium;
 
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -9,6 +11,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.TilePane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
 public class Controls extends TilePane {
@@ -22,6 +26,8 @@ public class Controls extends TilePane {
         initializeButtons();
     }
 
+
+
     public void initializeButtons() {
         // TilePane tilePane = new TilePane();
         for (int i = 0; i < controlButtons.length; i++) {
@@ -29,7 +35,7 @@ public class Controls extends TilePane {
             controlButtons[i].setMinSize(120, 20);
             controlButtons[i].setPadding(new Insets(10));
 
-            controlButtons[i].setOnAction(event);
+            // controlButtons[i].setOnAction(event);
 
             this.getChildren().add(controlButtons[i]);
             this.setAlignment(Pos.CENTER);
@@ -41,10 +47,5 @@ public class Controls extends TilePane {
         this.setVgap(20);
     }
 
-    EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-        public void handle(ActionEvent e)
-        {
-            System.out.println("Button Pressed");
-        }
-    };
+    
 }

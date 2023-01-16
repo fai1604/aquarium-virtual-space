@@ -1,19 +1,26 @@
 package org.aquarium;
+import java.io.File;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer; 
 public class ToggleBGMusic extends Command {
+
+    ToggleBGMusic(AquariumSpace space) {
+        super(space);
+        //TODO Auto-generated constructor stub
+    }
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
         
+        this.space.changeMusic(true); 
 
         
     }
 
     @Override
     public void undo() {
-        // TODO Auto-generated method stub
-        
+        this.space.changeMusic(false);
     }
     
 }
