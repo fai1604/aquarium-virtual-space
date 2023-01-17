@@ -13,7 +13,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.Media;
 import java.io.IOException;
 import java.lang.reflect.Array;
 
@@ -24,7 +25,7 @@ public class AquariumSpace {
         this.stage = stage;
     }
 
-    public Stage getStage(){
+    public Stage getStage() {
         return this.stage;
     }
 
@@ -37,7 +38,7 @@ public class AquariumSpace {
         root.setBottom(controls);
 
         Scene scene = new Scene(root, 1400, 780);
-        
+
         stage.setTitle("Aquarium Space");
         stage.setScene(scene);
         stage.show();

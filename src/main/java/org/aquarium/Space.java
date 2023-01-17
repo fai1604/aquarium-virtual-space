@@ -19,6 +19,10 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaPlayer.Status;
+
+import javafx.scene.media.Media;
 
 public class Space extends StackPane {
     private ArrayList<EntityImageViewAdapter> entities = new ArrayList<EntityImageViewAdapter>();
@@ -26,18 +30,26 @@ public class Space extends StackPane {
     Popup badgeListPopup = new Popup();
     private EntityImageViewAdapter fish;
     AquariumSpace aquarium;
+    Media pick;// replace this with your own audio file
+    MediaPlayer player;
 
     public Space(AquariumSpace aquarium) {
+        this.pick = new Media(getClass().getResource("Was.mp3").toExternalForm());
+        player = new MediaPlayer(pick);
+        player.setAutoPlay(false);
         this.aquarium = aquarium;
         this.initializeBackground();
         this.initializeEntities();
         this.initializeBadges();
         this.initializeBadgeListPopup();
+        System.out.print(player.getStatus().equals(Status.PLAYING));
     }
 
     public void initializeBackground() {
         Image image = new Image(App.class.getResource("images/background.png").toExternalForm());
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(1.0, 1.0, true, true, false, false));
+        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+                new BackgroundSize(1.0, 1.0, true, true, false, false));
         this.setBackground(new Background(backgroundImage));
     }
 
@@ -46,7 +58,7 @@ public class Space extends StackPane {
     }
 
     public void initializeEntities(EntityFactory entityFactory) {
-        EntityImageViewAdapter bubbles = new EntityImageViewAdapter(entityFactory.createBubblesEntity()); // index 0 
+        EntityImageViewAdapter bubbles = new EntityImageViewAdapter(entityFactory.createBubblesEntity()); // index 0
         EntityImageViewAdapter ship = new EntityImageViewAdapter(entityFactory.createWreckedShipEntity()); // index 1
         EntityImageViewAdapter crab = new EntityImageViewAdapter(entityFactory.createCrabsEntity()); // index 2
         EntityImageViewAdapter seahorse = new EntityImageViewAdapter(entityFactory.createSeahorsesEntity()); // index 3
@@ -107,7 +119,8 @@ public class Space extends StackPane {
         badgeList.addRow(0, plabel);
         badgeList.addRow(1, badges.get(0), badges.get(1), badges.get(2));
         badgeList.addRow(2, badges.get(3), badges.get(4));
-        badgeList.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
+        badgeList.setBackground(
+                new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
         badgeList.setPadding(new Insets(10));
         badgeList.setHgap(10);
         badgeList.setVgap(20);
@@ -129,7 +142,7 @@ public class Space extends StackPane {
         fish = null;
     }
 
-     public void toggleFishes(Button button) {
+    public void toggleFishes(Button button) {
         if (fish == null) {
             addFishes();
             button.setText("Remove Fishes");
@@ -157,7 +170,24 @@ public class Space extends StackPane {
         }
         return badgeListPopup.isShowing();
     }
-    
+
+    public boolean toggleMusic() {
+        if (!this.player.getStatus().equals(Status.PLAYING)) {
+            performCommand(new ToggleBGMusic(player));
+        } else {
+            undoCommand(new ToggleBGMusic(player));
+        }
+        return this.player.getStatus().equals(Status.PLAYING);
+    }
+
+    public void performCommand(Command cmd) {
+        cmd.execute();
+    }
+
+    public void undoCommand(Command cmd) {
+        cmd.undo();
+    }
+
     public ArrayList<ImageView> getBadgeList() {
         return badges;
     }
