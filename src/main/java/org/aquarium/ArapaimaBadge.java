@@ -9,7 +9,6 @@ import javafx.stage.Popup;
 public class ArapaimaBadge extends Badge{
 
     private static ArapaimaBadge uniqueArapaimaBadge;
-    AquariumSpace aquarium;
 
     private ArapaimaBadge(AquariumSpace aquarium) {
         this.aquarium = aquarium;

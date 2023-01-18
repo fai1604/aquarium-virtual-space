@@ -9,7 +9,6 @@ import javafx.stage.Popup;
 public class MackerelBadge extends Badge{
 
     private static MackerelBadge uniqueMackerelBadge;
-    AquariumSpace aquarium;
 
     private MackerelBadge(AquariumSpace aquarium) {
         this.aquarium = aquarium;
