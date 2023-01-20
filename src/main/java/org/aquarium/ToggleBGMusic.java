@@ -2,10 +2,11 @@ package org.aquarium;
 
 import javafx.scene.media.MediaPlayer;
 
-public class ToggleBGMusic extends Command {
+public class ToggleBGMusic implements Command {
+    MediaPlayer mediaPlayer;
 
     public ToggleBGMusic(MediaPlayer mediaPlayer) {
-        super(mediaPlayer);
+        this.mediaPlayer = mediaPlayer;
         // TODO Auto-generated constructor stub
     }
 

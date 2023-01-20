@@ -1,5 +1,6 @@
 package org.aquarium;
 
+import java.util.Stack;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -17,6 +18,11 @@ public class Controls extends TilePane {
     public Button[] entityButtons = new Button[5];
     public String[] entityButtonNames = { "Bubbles", "Wrecked Ship", "Crab", "Seahorse", "Seaweed" };
     public Space space;
+    // Stack<Integer> StackIndex = new Stack<>();
+    // Stack<CustomStack> combinedStack = new Stack<>();
+    private Stack<Button> stackBtn = new Stack<>();
+    private Stack<Integer> stackInt = new Stack<>();
+    private Stack<String> stackStr = new Stack<>();
 
     public Controls(Space space) {
         this.space = space;
@@ -45,6 +51,20 @@ public class Controls extends TilePane {
             this.setAlignment(Pos.CENTER);
         }
 
+        // Stack<ToggleEntityVisibilityCommand> stack = new Stack<>();
+        // for (int i = 0; i < entityButtonNames.length; i++) {
+        //     final Integer innerIndex = i;
+        //     entityButtons[innerIndex] = new Button("Add " + entityButtonNames[innerIndex]);
+        //     entityButtons[innerIndex].setMinSize(120, 20);
+        //     entityButtons[innerIndex].setPadding(new Insets(10));
+        //     entityButtons[innerIndex].setOnAction(e -> {
+        //         ToggleEntityVisibilityCommand cmd = new ToggleEntityVisibilityCommand(stack, entityButtons[innerIndex], innerIndex, entityButtonNames[innerIndex]);
+        //         cmd.execute();
+        //     });
+        //     this.getChildren().add(entityButtons[innerIndex]);
+        //     this.setAlignment(Pos.CENTER);
+        // }
+
         Button badgeBtn = new Button("See Badges");
         badgeBtn.setMinSize(120, 20);
         badgeBtn.setPadding(new Insets(10));
@@ -71,8 +91,9 @@ public class Controls extends TilePane {
         Button undoBtn = new Button("Undo");
         undoBtn.setMinSize(120, 20);
         undoBtn.setPadding(new Insets(10));
-        // undoBtn.setOnAction(e -> {
-        // });
+        undoBtn.setOnAction(e -> {
+            UndotoggleEntityVisibility();
+        });
         this.getChildren().add(undoBtn);
 
         Button exitBtn = new Button("Exit");
@@ -89,11 +110,29 @@ public class Controls extends TilePane {
     }
 
     public void toggleEntityVisibility(Button button, int index, String entityName) {
+        stackBtn.push(button);
+        stackInt.push(index);
+        stackStr.push(entityName);
         boolean visibility = space.toggleEntity(index);
         if (!visibility) {
             button.setText("Add " + entityName);
         } else {
             button.setText("Remove " + entityName);
+        }
+    }
+    
+    public void UndotoggleEntityVisibility() {
+        if (!stackBtn.isEmpty()){
+            
+            Button button = stackBtn.pop();
+            Integer index = stackInt.pop();
+            String entityName = stackStr.pop();
+            boolean visibility = space.toggleEntity(index);
+            if (!visibility) {
+                button.setText("Add " + entityName);
+            } else {
+                button.setText("Remove " + entityName);
+            }
         }
     }
 
