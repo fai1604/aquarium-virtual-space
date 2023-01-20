@@ -18,8 +18,6 @@ public class Controls extends TilePane {
     public Button[] entityButtons = new Button[5];
     public String[] entityButtonNames = { "Bubbles", "Wrecked Ship", "Crab", "Seahorse", "Seaweed" };
     public Space space;
-    // Stack<Integer> StackIndex = new Stack<>();
-    // Stack<CustomStack> combinedStack = new Stack<>();
     private Stack<Button> stackBtn = new Stack<>();
     private Stack<Integer> stackInt = new Stack<>();
     private Stack<String> stackStr = new Stack<>();
@@ -127,6 +125,16 @@ public class Controls extends TilePane {
             Button button = stackBtn.pop();
             Integer index = stackInt.pop();
             String entityName = stackStr.pop();
+
+            // String next;
+            // while (!stackBtn.empty()) {
+            //     next = stackStr.peek();
+            //     if (entityName.equals(next)) {
+            //         stackBtn.remove(stackBtn.size()-1);
+            //         stackInt.remove(stackInt.size()-1);
+            //         stackStr.remove(stackStr.size()-1);
+            //     }
+            // }
             boolean visibility = space.toggleEntity(index);
             if (!visibility) {
                 button.setText("Add " + entityName);
