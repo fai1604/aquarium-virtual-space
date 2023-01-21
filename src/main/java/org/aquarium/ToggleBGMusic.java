@@ -4,9 +4,11 @@ import javafx.scene.media.MediaPlayer;
 
 public class ToggleBGMusic extends Command {
 
+    MediaPlayer mediaPlayer;
+
     public ToggleBGMusic(MediaPlayer mediaPlayer) {
-        super(mediaPlayer);
-        // TODO Auto-generated constructor stub
+        this.mediaPlayer = mediaPlayer;
+        
     }
 
     @Override
