@@ -15,7 +15,7 @@ import javafx.stage.Popup;
 
 public class Controls extends TilePane {
     public Button[] entityButtons = new Button[5];
-    public String[] entityButtonNames = { "Bubbles", "Wrecked Ship", "Crab", "Seahorse", "Seaweed"};
+    public String[] entityButtonNames = { "Bubbles", "Wrecked Ship", "Crab", "Seahorse", "Seaweed" };
     public Space space;
 
     public Controls(Space space) {
@@ -32,7 +32,6 @@ public class Controls extends TilePane {
             space.toggleFishes(fishBtn);
         });
         this.getChildren().add(fishBtn);
-
 
         for (int i = 0; i < entityButtonNames.length; i++) {
             final Integer innerIndex = i;
@@ -57,8 +56,9 @@ public class Controls extends TilePane {
         Button musicBtn = new Button("Play BG Music");
         musicBtn.setMinSize(120, 20);
         musicBtn.setPadding(new Insets(10));
-        // musicBtn.setOnAction(e -> {
-        // });
+        musicBtn.setOnAction(e -> {
+            toggleMusic(musicBtn);
+        });
         this.getChildren().add(musicBtn);
 
         Button lightsBtn = new Button("Toggle Lights");
@@ -103,6 +103,15 @@ public class Controls extends TilePane {
             button.setText("See Badges List");
         } else {
             button.setText("Hide Badges List");
+        }
+    }
+
+    public void toggleMusic(Button button) {
+        boolean playing = space.toggleMusic();
+        if (!playing) {
+            button.setText("Stop Music");
+        } else {
+            button.setText("Play Music");
         }
     }
 }
