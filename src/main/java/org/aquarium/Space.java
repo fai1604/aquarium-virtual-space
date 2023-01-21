@@ -34,7 +34,7 @@ public class Space extends StackPane {
     MediaPlayer player;
 
     public Space(AquariumSpace aquarium) {
-        this.pick = new Media(getClass().getResource("Was.mp3").toExternalForm());
+        this.pick = new Media(getClass().getResource("music/bgmusic.mp3").toExternalForm());
         player = new MediaPlayer(pick);
         player.setAutoPlay(false);
         this.aquarium = aquarium;
