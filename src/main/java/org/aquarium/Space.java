@@ -1,6 +1,7 @@
 package org.aquarium;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -32,6 +33,11 @@ public class Space extends StackPane {
     AquariumSpace aquarium;
     Media pick;// replace this with your own audio file
     MediaPlayer player;
+    int countArapaima = 0; 
+    int countMackerel = 0;
+    int countSardine = 0;
+    int countTilapia = 0;
+    int countToman = 0;
 
     public Space(AquariumSpace aquarium) {
         this.pick = new Media(getClass().getResource("music/bgmusic.mp3").toExternalForm());
@@ -133,7 +139,26 @@ public class Space extends StackPane {
     }
 
     public void addFishes(EntityFactory entityFactory) {
-        fish = new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium, this));
+        Random random = new Random();
+        int fishRandom = random.nextInt(5);
+        switch(fishRandom) {
+            case 0:
+                this.countArapaima++;
+                break;
+            case 1:
+                this.countMackerel++;
+                break;
+            case 2:
+                this.countSardine++;
+                break;
+            case 3:
+                this.countTilapia++;
+                break;
+            case 4:
+                this.countToman++;
+                break;
+        }
+        fish = new EntityImageViewAdapter(entityFactory.createFishesEntity(aquarium, this, fishRandom, this.countArapaima, this.countMackerel, this.countSardine, this.countTilapia, this.countToman));
         this.getChildren().add(fish);
     }
 
