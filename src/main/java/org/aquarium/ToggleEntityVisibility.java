@@ -25,7 +25,4 @@ public class ToggleEntityVisibility implements Command{
         toggle.UnToggleEntity();
         
     }
-
-
-
 }

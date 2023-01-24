@@ -32,6 +32,7 @@ public class Space extends StackPane {
     AquariumSpace aquarium;
     Media pick;// replace this with your own audio file
     MediaPlayer player;
+    Toggle toggle;
 
     public Space(AquariumSpace aquarium) {
         this.pick = new Media(getClass().getResource("Was.mp3").toExternalForm());
@@ -179,6 +180,14 @@ public class Space extends StackPane {
         }
         return this.player.getStatus().equals(Status.PLAYING);
     }
+    // public boolean toggleDecoration() {
+    //     if (this.toggle.isVisibility()) {
+    //         performCommand(new ToggleEntityVisibility(toggle));
+    //     } else {
+    //         undoCommand(new ToggleEntityVisibility(toggle));
+    //     }
+    //     return this.toggle.isVisibility();
+    // }
 
     public void performCommand(Command cmd) {
         cmd.execute();

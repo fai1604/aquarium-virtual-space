@@ -15,19 +15,6 @@ public class Toggle {
     private String entityName;
     private boolean visibility;
 
-    // public void Toggle(Space space, Stack<Button> stackBtn, Stack<Integer> stackInt, Stack<String> stackStr, Button button, int index, String entityName) {
-    
-    //     this.space = space;
-    //     this.stackBtn = stackBtn;
-    //     this.stackInt = stackInt;
-    //     this.stackStr = stackStr;
-    //     this.button = button;
-    //     this.index = index;
-    //     this.entityName = entityName;
-
-
-    // }
-
     public void ToggleEntity() {
         visibility = space.toggleEntity(index);
         if (!visibility) {

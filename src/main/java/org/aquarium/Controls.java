@@ -43,6 +43,7 @@ public class Controls extends TilePane {
             entityButtons[innerIndex].setPadding(new Insets(10));
             entityButtons[innerIndex].setOnAction(e -> {
                 toggleEntityVisibility(entityButtons[innerIndex], innerIndex, entityButtonNames[innerIndex]);
+                space.performCommand(toggleV);
             });
             this.getChildren().add(entityButtons[innerIndex]);
             this.setAlignment(Pos.CENTER);
@@ -75,10 +76,7 @@ public class Controls extends TilePane {
         Button undoBtn = new Button("Undo");
         undoBtn.setMinSize(120, 20);
         undoBtn.setPadding(new Insets(10));
-        undoBtn.setOnAction(e -> {
-            // UndotoggleEntityVisibility();
-            toggleV.undo();
-        });
+        undoBtn.setOnAction(e -> space.undoCommand(toggleV));
         this.getChildren().add(undoBtn);
 
         Button exitBtn = new Button("Exit");
@@ -95,7 +93,6 @@ public class Controls extends TilePane {
     }
 
     public void toggleEntityVisibility( Button button1, int index1, String entityName1) {
-        
         toggle.setSpace(space);
         toggle.setStackBtn(stackBtn);
         toggle.setStackInt(stackInt);
@@ -103,7 +100,6 @@ public class Controls extends TilePane {
         toggle.setButton(button1);
         toggle.setEntityName(entityName1);
         toggle.setIndex(index1);
-        toggleV.execute();
     }
 
     // public void toggleEntityVisibility( Button button, int index, String entityName) {
