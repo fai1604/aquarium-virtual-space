@@ -12,7 +12,6 @@ import javafx.stage.Popup;
 public class TomanBadge extends Badge {
 
     private static TomanBadge uniqueTomanBadge;
-    AquariumSpace aquarium;
 
     private TomanBadge(AquariumSpace aquarium) {
         this.aquarium = aquarium;

@@ -1,6 +1,9 @@
 package org.aquarium;
 
-public abstract class Command {
+import javafx.scene.media.MediaPlayer;
+
+public interface Command {
+
 
     public abstract void execute();
 
