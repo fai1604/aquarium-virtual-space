@@ -66,7 +66,7 @@ public class Controls extends GridPane {
         musicBtn.setMinSize(120, 20);
         musicBtn.setPadding(new Insets(10));
         musicBtn.setOnAction(e -> {
-            // toggleMusic(musicBtn);
+        toggleMusic(musicBtn);
         });
         this.addRow(1, musicBtn);
 
