@@ -7,11 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
 
-public class Controls extends TilePane {
+public class Controls extends GridPane {
     public Button[] entityButtons = new Button[5];
     public String[] entityButtonNames = { "Bubbles", "Wrecked Ship", "Crab", "Seahorse", "Seaweed" };
     public Space space;
@@ -34,7 +35,7 @@ public class Controls extends TilePane {
         fishBtn.setOnAction(e -> {
             space.toggleFishes(fishBtn);
         });
-        this.getChildren().add(fishBtn);
+        this.addRow(0, fishBtn);
 
         for (int i = 0; i < entityButtonNames.length; i++) {
             final Integer innerIndex = i;
@@ -45,8 +46,11 @@ public class Controls extends TilePane {
                 toggleEntityVisibility(entityButtons[innerIndex], innerIndex, entityButtonNames[innerIndex]);
                 space.performCommand(toggleV);
             });
-            this.getChildren().add(entityButtons[innerIndex]);
-            this.setAlignment(Pos.CENTER);
+            if (innerIndex == 4) {
+                this.addRow(1, entityButtons[innerIndex]);
+            } else {
+                this.addRow(0, entityButtons[innerIndex]);
+            }
         }
 
 
@@ -56,49 +60,44 @@ public class Controls extends TilePane {
         badgeBtn.setOnAction(e -> {
             toggleBadgeListVisibility(badgeBtn);
         });
-        this.getChildren().add(badgeBtn);
+        this.addRow(1, badgeBtn);
 
         Button musicBtn = new Button("Play BG Music");
         musicBtn.setMinSize(120, 20);
         musicBtn.setPadding(new Insets(10));
         musicBtn.setOnAction(e -> {
-            toggleMusic(musicBtn);
+            // toggleMusic(musicBtn);
         });
-        this.getChildren().add(musicBtn);
-
-        Button lightsBtn = new Button("Toggle Lights");
-        lightsBtn.setMinSize(120, 20);
-        lightsBtn.setPadding(new Insets(10));
-        // musicBtn.setOnAction(e -> {
-        // });
-        this.getChildren().add(lightsBtn);
+        this.addRow(1, musicBtn);
 
         Button undoBtn = new Button("Undo");
         undoBtn.setMinSize(120, 20);
         undoBtn.setPadding(new Insets(10));
         undoBtn.setOnAction(e -> space.undoCommand(toggleV));
-        this.getChildren().add(undoBtn);
+        this.addRow(1, undoBtn);
 
         Button exitBtn = new Button("Exit");
         exitBtn.setMinSize(120, 20);
         exitBtn.setPadding(new Insets(10));
-        // exitBtn.setOnAction(e -> {
-        // });
-        this.getChildren().add(exitBtn);
+        exitBtn.setOnAction(e -> {
+            space.stop();
+        });
+        this.addRow(1, exitBtn);
 
         this.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
         this.setPadding(new Insets(10));
+        this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(20);
     }
 
-    public void toggleEntityVisibility( Button button1, int index1, String entityName1) {
+    public void toggleEntityVisibility(Button button1, int index1, String entityName) {
         toggle.setSpace(space);
         toggle.setStackBtn(stackBtn);
         toggle.setStackInt(stackInt);
         toggle.setStackStr(stackStr);
         toggle.setButton(button1);
-        toggle.setEntityName(entityName1);
+        toggle.setEntityName(entityName);
         toggle.setIndex(index1);
     }
 

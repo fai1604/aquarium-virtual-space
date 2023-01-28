@@ -26,6 +26,7 @@ public class App extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
+        aquariumSpace.stopAquarium();
     }
 
     // static void setRoot(String fxml) throws IOException {

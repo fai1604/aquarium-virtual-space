@@ -56,4 +56,8 @@ public class AquariumSpace {
         stage.show();
     }
 
+    public void stopAquarium() {
+        stage.close();
+    }
+
 }

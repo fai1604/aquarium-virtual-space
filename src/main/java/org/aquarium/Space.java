@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -118,8 +119,9 @@ public class Space extends StackPane {
 
     public void initializeBadgeListPopup() {
         Label plabel = new Label();
-        plabel.setStyle("-fx-background-color: #808080; -fx-font-size:25");
+        plabel.setStyle("-fx-font-size:25");
         plabel.setText("Badges List");
+        plabel.setAlignment(Pos.CENTER);
 
         GridPane badgeList = new GridPane();
         badgeList.addRow(0, plabel);
@@ -130,6 +132,7 @@ public class Space extends StackPane {
         badgeList.setPadding(new Insets(10));
         badgeList.setHgap(10);
         badgeList.setVgap(20);
+        badgeList.setAlignment(Pos.CENTER);
 
         badgeListPopup.getContent().add(badgeList);
     }
@@ -177,12 +180,14 @@ public class Space extends StackPane {
         }
     }
 
-    public boolean toggleEntity(int index) {
+    public boolean toggleEntity(Button button, int index, String entityName) {
         var entity = entities.get(index);
         if (!entity.isVisible()) {
             entity.setVisible(true);
+            button.setText("Remove " + entityName);
         } else {
             entity.setVisible(false);
+            button.setText("Add " + entityName);
         }
         return entity.isVisible();
     }
@@ -215,5 +220,9 @@ public class Space extends StackPane {
 
     public ArrayList<ImageView> getBadgeList() {
         return badges;
+    }
+
+    public void stop() {
+        aquarium.stopAquarium();
     }
 }

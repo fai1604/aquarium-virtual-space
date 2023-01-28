@@ -16,24 +16,32 @@ public class Toggle {
     private boolean visibility;
 
     public void ToggleEntity() {
-        visibility = space.toggleEntity(index);
-        if (!visibility) {
-            button.setText("Add " + entityName);
-        } else {
-            button.setText("Remove " + entityName);
-        }
+        visibility = space.toggleEntity(button, index, entityName);
+        // if (!visibility) {
+        //     button.setText("Add " + entityName);
+        // } else {
+        //     button.setText("Remove " + entityName);
+        // }
         
     }
     public void UnToggleEntity() {
-        space.toggleEntity(index);
-        button = stackBtn.pop();
-        index = stackInt.pop();
-        entityName = stackStr.pop();
-        if (!visibility) {
-            button.setText("Add " + entityName);    
-        } else {
-            button.setText("Remove " + entityName);
+        // space.toggleEntity(index);
+        // button = stackBtn.pop();
+        // index = stackInt.pop();
+        // entityName = stackStr.pop();
+        if (stackInt.size() != 0) {
+            space.toggleEntity(stackBtn.pop(), stackInt.pop(), stackStr.pop());
+            // if (!visibility) {
+            //     button.setText("Add " + entityName);    
+            // } else {
+            //     button.setText("Remove " + entityName);
+            // }
         }
+        // if (!visibility) {
+        //     button.setText("Add " + entityName);    
+        // } else {
+        //     button.setText("Remove " + entityName);
+        // }
     }
 
     /**
@@ -103,6 +111,7 @@ public class Toggle {
      * @param button the button to set
      */
     public void setButton(Button button) {
+        stackBtn.add(button);
         this.button = button;
     }
 
@@ -117,6 +126,7 @@ public class Toggle {
      * @param index the index to set
      */
     public void setIndex(int index) {
+        stackInt.add(index);
         this.index = index;
     }
 
@@ -131,6 +141,7 @@ public class Toggle {
      * @param entityName the entityName to set
      */
     public void setEntityName(String entityName) {
+        stackStr.add(entityName);
         this.entityName = entityName;
     }
 
