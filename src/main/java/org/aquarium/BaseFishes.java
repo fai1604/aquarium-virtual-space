@@ -12,9 +12,6 @@ public class BaseFishes extends Entity {
         this.space = space;
 
         try {
-            // Random random = new Random();
-            // int i = 0;
-            // random.nextInt(FISH_TYPE_COUNT)
             switch(fishRandom) {
                 case 0:
                     this.name = "arapaima";

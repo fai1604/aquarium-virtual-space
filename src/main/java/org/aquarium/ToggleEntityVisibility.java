@@ -1,9 +1,4 @@
 package org.aquarium;
-
-import java.util.Stack;
-
-import javafx.scene.control.Button;
-
 public class ToggleEntityVisibility implements Command{
 
     Toggle toggle;

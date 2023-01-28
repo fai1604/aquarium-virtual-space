@@ -8,7 +8,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 
 
@@ -28,20 +27,21 @@ public class Controls extends GridPane {
     }
 
     public void initializeButtons() {
+        int btn_minWidth = 200;
+        int btn_minHeight = 50;
+        int padding = 15;
 
         Button fishBtn = new Button("Generate Fishes");
-        fishBtn.setMinSize(200, 50);
-        fishBtn.setPadding(new Insets(10));
-        fishBtn.setOnAction(e -> {
-            space.toggleFishes(fishBtn);
-        });
+        fishBtn.setMinSize(btn_minWidth, btn_minHeight);
+        fishBtn.setPadding(new Insets(padding));
+        fishBtn.setOnAction(e -> space.toggleFishes(fishBtn));
         this.addRow(0, fishBtn);
 
         for (int i = 0; i < entityButtonNames.length; i++) {
             final Integer innerIndex = i;
             entityButtons[innerIndex] = new Button("Add " + entityButtonNames[innerIndex]);
-            entityButtons[innerIndex].setMinSize(200, 50);
-            entityButtons[innerIndex].setPadding(new Insets(10));
+            entityButtons[innerIndex].setMinSize(btn_minWidth, btn_minHeight);
+            entityButtons[innerIndex].setPadding(new Insets(padding));
             entityButtons[innerIndex].setOnAction(e -> {
                 toggleEntityVisibility(entityButtons[innerIndex], innerIndex, entityButtonNames[innerIndex]);
                 space.performCommand(toggleV);
@@ -55,41 +55,36 @@ public class Controls extends GridPane {
 
 
         Button badgeBtn = new Button("See Badges");
-        badgeBtn.setMinSize(200, 50);
-        badgeBtn.setPadding(new Insets(10));
-        badgeBtn.setOnAction(e -> {
-            toggleBadgeListVisibility(badgeBtn);
-        });
+        badgeBtn.setMinSize(btn_minWidth, btn_minHeight);
+        badgeBtn.setPadding(new Insets(padding));
+        badgeBtn.setOnAction(e -> 
+            toggleBadgeListVisibility(badgeBtn));
         this.addRow(1, badgeBtn);
 
         Button musicBtn = new Button("Play BG Music");
-        musicBtn.setMinSize(200, 50);
-        musicBtn.setPadding(new Insets(10));
-        musicBtn.setOnAction(e -> {
-            toggleMusic(musicBtn);
-        });
+        musicBtn.setMinSize(btn_minWidth, btn_minHeight);
+        musicBtn.setPadding(new Insets(padding));
+        musicBtn.setOnAction(e -> toggleMusic(musicBtn));
         this.addRow(1, musicBtn);
 
         Button undoBtn = new Button("Undo");
-        undoBtn.setMinSize(200, 50);
-        undoBtn.setPadding(new Insets(10));
+        undoBtn.setMinSize(btn_minWidth, btn_minHeight);
+        undoBtn.setPadding(new Insets(padding));
         undoBtn.setOnAction(e -> space.undoCommand(toggleV));
         this.addRow(1, undoBtn);
 
         Button exitBtn = new Button("Exit");
-        exitBtn.setMinSize(200, 50);
-        exitBtn.setPadding(new Insets(10));
-        exitBtn.setOnAction(e -> {
-            space.stop();
-        });
+        exitBtn.setMinSize(btn_minWidth, btn_minHeight);
+        exitBtn.setPadding(new Insets(padding));
+        exitBtn.setOnAction(e -> space.stop());
         this.addRow(1, exitBtn);
 
         this.setBackground(new Background(new BackgroundFill(Color.web("#C2C5CC"), CornerRadii.EMPTY, Insets.EMPTY)));
-        this.setPadding(new Insets(10));
+        this.setPadding(new Insets(5, 5, 10, 5 ));
         this.setAlignment(Pos.CENTER);
-        this.setHgap(10);
-        this.setVgap(20);
-        this.setPrefHeight(200);
+        this.setHgap(7);
+        this.setVgap(7);
+        this.setPrefHeight(145);
     }
 
     public void toggleEntityVisibility(Button button1, int index1, String entityName) {
@@ -101,47 +96,6 @@ public class Controls extends GridPane {
         toggle.setEntityName(entityName);
         toggle.setIndex(index1);
     }
-
-    // public void toggleEntityVisibility( Button button, int index, String entityName) {
-
-        // stackBtn.push(button);
-        // stackInt.push(index);
-        // stackStr.push(entityName);
-
-        // boolean visibility = space.toggleEntity(index);
-        // if (!visibility) {
-        //     button.setText("Add " + entityName);
-        // } else {
-        //     button.setText("Remove " + entityName);
-        // }
-
-        
-    // }
-    
-    // public void UndotoggleEntityVisibility() {
-    //     if (!stackBtn.isEmpty()){
-            
-    //         Button button = stackBtn.pop();
-    //         Integer index = stackInt.pop();
-    //         String entityName = stackStr.pop();
-
-    //         // String next;
-    //         // while (!stackBtn.empty()) {
-    //         //     next = stackStr.peek();
-    //         //     if (entityName.equals(next)) {
-    //         //         stackBtn.remove(stackBtn.size()-1);
-    //         //         stackInt.remove(stackInt.size()-1);
-    //         //         stackStr.remove(stackStr.size()-1);
-    //         //     }
-    //         // }
-    //         boolean visibility = space.toggleEntity(index);
-    //         if (!visibility) {
-    //             button.setText("Add " + entityName);
-    //         } else {
-    //             button.setText("Remove " + entityName);
-    //         }
-    //     }
-    // }
 
     public void toggleBadgeListVisibility(Button button) {
         boolean visibility = space.toggleBadgeListPopup();

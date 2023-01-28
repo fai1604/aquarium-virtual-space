@@ -17,32 +17,15 @@ public class Toggle {
 
     public void ToggleEntity() {
         visibility = space.toggleEntity(button, index, entityName);
-        // if (!visibility) {
-        //     button.setText("Add " + entityName);
-        // } else {
-        //     button.setText("Remove " + entityName);
-        // }
-        
     }
+
+
     public void UnToggleEntity() {
-        // space.toggleEntity(index);
-        // button = stackBtn.pop();
-        // index = stackInt.pop();
-        // entityName = stackStr.pop();
-        if (stackInt.size() != 0) {
+        if (!stackInt.isEmpty()) {
             space.toggleEntity(stackBtn.pop(), stackInt.pop(), stackStr.pop());
-            // if (!visibility) {
-            //     button.setText("Add " + entityName);    
-            // } else {
-            //     button.setText("Remove " + entityName);
-            // }
         }
-        // if (!visibility) {
-        //     button.setText("Add " + entityName);    
-        // } else {
-        //     button.setText("Remove " + entityName);
-        // }
     }
+
 
     /**
      * @return Space return the space

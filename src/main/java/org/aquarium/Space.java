@@ -18,7 +18,6 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.scene.media.MediaPlayer;
@@ -54,6 +53,7 @@ public class Space extends StackPane {
 
     public void initializeBackground() {
         Image image = new Image(App.class.getResource("images/background.png").toExternalForm());
+    
         BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 new BackgroundSize(1.0, 1.0, true, true, false, false));

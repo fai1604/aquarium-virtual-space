@@ -1,7 +1,5 @@
 package org.aquarium;
 
-import javafx.scene.media.MediaPlayer;
-
 public interface Command {
 
 

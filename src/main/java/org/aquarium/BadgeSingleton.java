@@ -1,9 +1,5 @@
 package org.aquarium;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.stage.Popup;
-
 public class BadgeSingleton {
     private static BadgeSingleton uniqueInstance;
 
