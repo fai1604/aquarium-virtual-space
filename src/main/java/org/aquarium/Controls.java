@@ -30,7 +30,7 @@ public class Controls extends GridPane {
     public void initializeButtons() {
 
         Button fishBtn = new Button("Generate Fishes");
-        fishBtn.setMinSize(120, 20);
+        fishBtn.setMinSize(200, 50);
         fishBtn.setPadding(new Insets(10));
         fishBtn.setOnAction(e -> {
             space.toggleFishes(fishBtn);
@@ -40,7 +40,7 @@ public class Controls extends GridPane {
         for (int i = 0; i < entityButtonNames.length; i++) {
             final Integer innerIndex = i;
             entityButtons[innerIndex] = new Button("Add " + entityButtonNames[innerIndex]);
-            entityButtons[innerIndex].setMinSize(120, 20);
+            entityButtons[innerIndex].setMinSize(200, 50);
             entityButtons[innerIndex].setPadding(new Insets(10));
             entityButtons[innerIndex].setOnAction(e -> {
                 toggleEntityVisibility(entityButtons[innerIndex], innerIndex, entityButtonNames[innerIndex]);
@@ -55,7 +55,7 @@ public class Controls extends GridPane {
 
 
         Button badgeBtn = new Button("See Badges");
-        badgeBtn.setMinSize(120, 20);
+        badgeBtn.setMinSize(200, 50);
         badgeBtn.setPadding(new Insets(10));
         badgeBtn.setOnAction(e -> {
             toggleBadgeListVisibility(badgeBtn);
@@ -63,21 +63,21 @@ public class Controls extends GridPane {
         this.addRow(1, badgeBtn);
 
         Button musicBtn = new Button("Play BG Music");
-        musicBtn.setMinSize(120, 20);
+        musicBtn.setMinSize(200, 50);
         musicBtn.setPadding(new Insets(10));
         musicBtn.setOnAction(e -> {
-            // toggleMusic(musicBtn);
+            toggleMusic(musicBtn);
         });
         this.addRow(1, musicBtn);
 
         Button undoBtn = new Button("Undo");
-        undoBtn.setMinSize(120, 20);
+        undoBtn.setMinSize(200, 50);
         undoBtn.setPadding(new Insets(10));
         undoBtn.setOnAction(e -> space.undoCommand(toggleV));
         this.addRow(1, undoBtn);
 
         Button exitBtn = new Button("Exit");
-        exitBtn.setMinSize(120, 20);
+        exitBtn.setMinSize(200, 50);
         exitBtn.setPadding(new Insets(10));
         exitBtn.setOnAction(e -> {
             space.stop();
@@ -89,6 +89,7 @@ public class Controls extends GridPane {
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(20);
+        this.setPrefHeight(200);
     }
 
     public void toggleEntityVisibility(Button button1, int index1, String entityName) {
