@@ -61,12 +61,6 @@ public class Controls extends TilePane {
         });
         this.getChildren().add(musicBtn);
 
-        Button lightsBtn = new Button("Toggle Lights");
-        lightsBtn.setMinSize(120, 20);
-        lightsBtn.setPadding(new Insets(10));
-        // musicBtn.setOnAction(e -> {
-        // });
-        this.getChildren().add(lightsBtn);
 
         Button undoBtn = new Button("Undo");
         undoBtn.setMinSize(120, 20);
