@@ -9,7 +9,6 @@ import javafx.stage.Popup;
 public class SardinBadge extends Badge {
 
     private static SardinBadge uniqueSardinBadge;
-    AquariumSpace aquarium;
 
     private SardinBadge(AquariumSpace aquarium) {
         this.aquarium = aquarium;
